@@ -41,7 +41,7 @@ You must before start your proyect remove or change the git remote url
 
 ### Change remote
 
-- git remote set-url origin <url-at-your-proyect-git>
+- git remote set-url origin url-at-your-proyect-git
 - git remote -v
 
 Enjoy!
