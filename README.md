@@ -33,7 +33,7 @@ And change some components from the original laravel install.
 - php artisan key:generate
 - npm install
 - npm run dev
-- php artisan migrate
+- php artisan migrate --seed
 - php artisan storage:link
 - php artisan test
 
