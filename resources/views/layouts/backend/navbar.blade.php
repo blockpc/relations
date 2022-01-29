@@ -7,24 +7,22 @@
     <div class="flex-1">
         {{-- mobile menu button --}}
         <button class="h-16 mobile-menu-button p-4" x-on:click="sidebar = !sidebar">
-            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path :class="{'hidden': sidebar, 'inline-flex': ! sidebar }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                <path :class="{'hidden': ! sidebar, 'inline-flex': sidebar }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <div :class="sidebar ? 'hidden' : 'inline-flex'">
+                <x-carbon-menu class="h-6 w-6" />
+            </div>
+            <div :class="! sidebar ? 'hidden' : 'inline-flex' ">
+                <x-carbon-close class="h-6 w-6" />
+            </div>
         </button>
     </div>
     <div class="flex items-center space-x-2 shadow mx-4">
         {{-- dark mode button --}}
         <div class="h-16 flex">
             <button type="button" x-on:click="mode=false" x-show="mode" class="setMode" id="sun">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
+                <x-carbon-sun class="h-5 w-5 text-yellow-300" />
             </button>
             <button type="button" x-on:click="mode=true" x-show="!mode" class="setMode" id="dark">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
+                <x-carbon-moon class="h-6 w-6 text-gray-800" />
             </button>
         </div>
         {{-- Responsive User Options --}}
@@ -35,14 +33,12 @@
                         <img class="rounded-full w-8 h-8 text-gray-600" src="{{ image_profile() }}" alt="{{ current_user()->profile->fullname }}">
                     </div>
                     <div :class="open ? 'transform rotate-180' : 'transform rotate-0'">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
+                        <x-carbon-chevron-up class="fill-current h-4 w-4" />
                     </div>
                 </button>
             </x-slot>
             <x-slot name="content">
-                <div class="flex items-center space-x-2 border-b-2 border-gray-200 dark:border-gray-600 pb-4">
+                <div class="flex items-center space-x-2 border-b-2 border-gray-200 dark:border-gray-600 p-2">
                     <div class="w-16">
                         <img class="rounded-full text-gray-600" src="{{ image_profile() }}" alt="{{ current_user()->profile->fullname }}">
                     </div>
@@ -52,7 +48,10 @@
                     </div>
                 </div>
                 <x-sidebar-link :href="route('profile')" :active="request()->routeIs('profile')">
-                    {{ __('Profile User') }}
+                    <div class="flex justify-between items-center">
+                        <span>{{ __('Profile User') }}</span>
+                        <x-carbon-user-profile class="w-5 h-5" />
+                    </div>
                 </x-sidebar-link>
                 <hr class="border border-gray-200 dark:border-gray-600">
                 <form method="POST" action="{{ route('logout') }}">

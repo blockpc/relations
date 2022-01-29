@@ -17,6 +17,11 @@ Packages for laravel:
 - [yoeunes/toastr](https://github.com/yoeunes/toastr)
 - [intervention/image](http://image.intervention.io/)
 
+Icons [blade-ui-kit/blade-icons](https://github.com/blade-ui-kit/blade-icons) with 
+- [Carbon](https://github.com/codeat3/blade-carbon-icons)
+- [Boxicons](https://github.com/mallardduck/blade-boxicons)
+- [Heroicos](https://github.com/blade-ui-kit/blade-heroicons)
+
 Packages NPM: only one, [tailwind-scrollbar](https://github.com/adoxography/tailwind-scrollbar)
 
 This packages includes a model `Profile` (one-to-one for user) and model `Image` (polimorphic model)
@@ -41,7 +46,7 @@ You must before start your proyect remove or change the git remote url
 
 ### Change remote
 
-- git remote set-url origin url-at-your-proyect-git
+- git remote set-url origin `url-at-your-proyect-git`
 - git remote -v
 
 Enjoy!

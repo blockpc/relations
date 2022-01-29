@@ -22,24 +22,22 @@
             <div class="flex space-x-4">
                 <div class="px-2 h-16 flex">
                     <button type="button" x-on:click="mode=false" x-show="mode" class="setMode" id="sun">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
+                        <x-carbon-sun class="h-5 w-5 text-yellow-300" />
                     </button>
                     <button type="button" x-on:click="mode=true" x-show="!mode" class="setMode" id="dark">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                        </svg>
+                        <x-carbon-moon class="h-6 w-6 text-gray-800" />
                     </button>
                 </div>
 
                 {{-- Hamburger --}}
                 <div class="-mr-2 flex items-center sm:hidden">
-                    <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md focus:bg-gray-200 dark:focus:bg-gray-700 transition duration-150 ease-in-out">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
+                    <button x-on:click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md focus:bg-gray-200 dark:focus:bg-gray-700 transition duration-150 ease-in-out">
+                        <div :class="open ? 'hidden' : 'inline-flex'">
+                            <x-carbon-menu class="h-6 w-6" />
+                        </div>
+                        <div :class="! open ? 'hidden' : 'inline-flex' ">
+                            <x-carbon-close class="h-6 w-6" />
+                        </div>
                     </button>
                 </div>
 
