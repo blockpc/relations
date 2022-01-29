@@ -22,6 +22,8 @@ Icons [blade-ui-kit/blade-icons](https://github.com/blade-ui-kit/blade-icons) wi
 - [Boxicons](https://github.com/mallardduck/blade-boxicons)
 - [Heroicos](https://github.com/blade-ui-kit/blade-heroicons)
 
+_Dont forget clear cache icons_
+
 Packages NPM: only one, [tailwind-scrollbar](https://github.com/adoxography/tailwind-scrollbar)
 
 This packages includes a model `Profile` (one-to-one for user) and model `Image` (polimorphic model)
