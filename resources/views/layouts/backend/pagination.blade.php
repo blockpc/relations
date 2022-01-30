@@ -40,9 +40,7 @@
                     {{-- Previous Page Link --}}
                     @if (!$paginator->onFirstPage())
                         <a wire:click="previousPage" rel="prev" class="relative first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight border border-solid border-blue-600 bg-white text-blue-600 hover:bg-blue-100" aria-label="{{ __('pagination.previous') }}">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                            </svg>
+                            <x-heroicon-s-chevron-left class="w-4 h-4" />
                         </a>
                     @endif
 
@@ -55,7 +53,7 @@
                                 {{-- Use three dots when current page is greater than 3. --}}
                                 @if ($paginator->currentPage() > 3 && $page === 2)
                                     <div class="text-gray-800 dark:text-gray-200 flex items-center mx-1">
-                                        <i class="fas fa-ellipsis-h"></i>
+                                        <x-heroicon-o-dots-horizontal class="w-3 h-3" />
                                     </div>
                                 @endif
 
@@ -77,7 +75,7 @@
                                 {{-- Use three dots when current page is away from end. --}}
                                 @if ($paginator->currentPage() < $paginator->lastPage() - 2  && $page === $paginator->lastPage() - 1)
                                     <div class="text-gray-800 dark:text-gray-200 flex items-center mx-1">
-                                        <i class="fas fa-ellipsis-h"></i>
+                                        <x-heroicon-o-dots-horizontal class="w-3 h-3" />
                                     </div>
                                 @endif
                             @endforeach
@@ -87,9 +85,7 @@
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())
                         <a wire:click="nextPage" rel="next" class="relative first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight border border-solid border-blue-600 bg-white text-blue-600 hover:bg-blue-100" aria-label="{{ __('pagination.next') }}">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                            </svg>
+                            <x-heroicon-s-chevron-right class="w-4 h-4" />
                         </a>
                     @endif
                 </span>

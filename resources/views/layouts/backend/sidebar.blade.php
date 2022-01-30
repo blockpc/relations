@@ -26,7 +26,7 @@ x-transition:leave-end="opacity-0">
     @if ( current_user()->can('role list') )
     <x-sidebar-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
         <div class="flex space-x-2 items-center">
-            <x-carbon-user-certification  class="w-5 h-5" />
+            <x-carbon-user-certification class="w-5 h-5" />
             <span>{{__('Roles')}}</span>
         </div>
     </x-sidebar-link>
