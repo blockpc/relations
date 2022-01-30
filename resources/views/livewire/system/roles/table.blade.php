@@ -8,7 +8,7 @@
                     <p class="text-sm">{!! $error !!}.</p>
                 </div>
                 <button type="button" class="btn-sm" onclick="closeAlert('alert-message-delete-error')">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
+                    <x-carbon-close class="w-5 h-5" />
                 </button>
             </div>
         </div>
@@ -16,16 +16,17 @@
         <div class="flex flex-row">
             <div class="w-full mr-1 relative rounded-md shadow-sm">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span class="dark:text-gray-200 text-gray-700 sm:text-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path><path d="M11.412 8.586c.379.38.588.882.588 1.414h2a3.977 3.977 0 0 0-1.174-2.828c-1.514-1.512-4.139-1.512-5.652 0l1.412 1.416c.76-.758 2.07-.756 2.826-.002z"></path></svg>
+                    @if ( $search )
+                    <button type="button" wire:click="clean" class="text-red-700 hover:text-red-800 dark:text-red-300 dark:hover:text-red-400 font-bold">
+                        <x-carbon-close class="w-4 h-4" />
+                    </button>
+                    @else
+                    <span class="dark:text-gray-200 text-gray-700 sm:text-sm cursor-default">
+                        <x-heroicon-s-search class="w-4 h-4" />
                     </span>
+                    @endif
                 </div>
                 <input wire:model="search" type="text" id="search" class="input-search" placeholder="Search">
-                @if ( $search )
-                <button type="button" wire:click="clean" class="absolute inset-y-0 right-16 flex items-center focus:ring-red-300 border-red-300 focus:border-red-300 text-red-500 hover:text-red-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
-                </button>
-                @endif
                 @if ( $paginate && count($roles) >= 10 )
                 <div class="absolute inset-y-0 right-0 flex items-center">
                     <select wire:model="paginate" id="paginate" name="paginate" class="focus:ring-gray-500 border-gray-500 focus:border-gray-400 h-full py-0 pl-2 pr-7 border-transparent bg-transparent dark:text-gray-200 text-gray-700 dark:bg-gray-600 sm:text-sm rounded-md">
@@ -39,13 +40,11 @@
             @if ( isset($roles_deleted) && $auth->can('role delete') )
                 @if(!$roles_deleted)
                     <button wire:click="eliminated" type="button" class="btn-sm btn-danger flex fles-row items-center m-0 space-x-2 h-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 fill-current"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                        <x-carbon-trash-can class="w-4 h-4" />
                     </button>
                     @else
                     <button wire:click="eliminated" type="button" class="btn-sm btn-success flex fles-row items-center m-0 space-x-2 h-8">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <x-carbon-checkmark-outline class="w-4 h-4" />
                     </button>
                     @endif
                 @endif
@@ -135,7 +134,7 @@
             {{ $roles->links('layouts.backend.pagination') }}
         </div>
         @if ( current_user()->can('role delete') )
-        <div class="text-xs text-center">Los cargos <b>Administrador</b>, <b>Usuario</b> y <b>Cajero</b> no se pueden <b class="text-red-400">eliminar</b>, por ser los cargos base del sistema.</div>
+        <div class="text-xs text-center">Los cargos <b>Administrador</b> y <b>Usuario</b> no se pueden <b class="text-red-400">eliminar</b>, por ser los cargos base del sistema.</div>
         @endif
     </div>
 </div>

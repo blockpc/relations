@@ -18,3 +18,9 @@ if (! function_exists('image_profile')) {
         }
     }
 }
+
+if (! function_exists('format_date')) {
+    function format_date($date, $format_out, $fomat_in = 'Y-m-d'){
+        return \Carbon\Carbon::createFromFormat($fomat_in, $date)->format($format_out);    
+    }
+}
