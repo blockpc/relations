@@ -20,6 +20,7 @@
         </style>
 
         @livewireStyles
+        @stack('styles')
 
         <!-- Scripts -->
         <script src="{{ global_asset('js/app.js') }}" defer></script>
@@ -41,5 +42,6 @@
             </main>
         </div>
         @livewireScripts
+        @stack('scripts')
     </body>
 </html>
