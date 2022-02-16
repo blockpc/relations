@@ -39,7 +39,6 @@ final class DeleteAndRestoreUserTest extends TestBase
         ], $this->role_user);
 
         $this->assertDatabaseHas('users', [
-            'id' => 4,
             'name' => 'ayudante',
             'deleted_at' => null,
         ]);
@@ -50,7 +49,6 @@ final class DeleteAndRestoreUserTest extends TestBase
             ->assertHasNoErrors('delete');
 
         $this->assertDatabasehas('users', [
-            'id' => 4,
             'name' => 'ayudante',
             'deleted_at' => $knownDate,
         ]);
@@ -70,7 +68,6 @@ final class DeleteAndRestoreUserTest extends TestBase
         ], $this->role_user);
 
         $this->assertDatabasehas('users', [
-            'id' => 4,
             'name' => 'ayudante',
             'deleted_at' => $knownDate,
         ]);
@@ -81,7 +78,6 @@ final class DeleteAndRestoreUserTest extends TestBase
             ->assertHasNoErrors('delete');
 
         $this->assertDatabasehas('users', [
-            'id' => 4,
             'name' => 'ayudante',
             'deleted_at' => null,
         ]);

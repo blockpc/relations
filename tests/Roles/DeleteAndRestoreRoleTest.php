@@ -25,7 +25,6 @@ final class DeleteAndRestoreRoleTest extends TestBase
     public function can_delete_a_role()
     {
         $this->assertDatabaseHas('roles', [
-            'id' => 4,
             'name' => 'ayudante'
         ]);
 
@@ -35,7 +34,6 @@ final class DeleteAndRestoreRoleTest extends TestBase
             ->assertHasNoErrors();
 
         $this->assertDatabaseMissing('roles', [
-            'id' => 4,
             'name' => 'ayudante'
         ]);
     }
@@ -45,7 +43,7 @@ final class DeleteAndRestoreRoleTest extends TestBase
     {
         Livewire::actingAs($this->sudo)
             ->test(Table::class)
-            ->call('delete', 3)
+            ->call('delete', $this->role_user->id)
             ->assertHasErrors('delete_role');
     }
 
@@ -61,7 +59,6 @@ final class DeleteAndRestoreRoleTest extends TestBase
         ], $this->ayudante);
 
         $this->assertDatabaseHas('users', [
-            'id' => 4,
             'name' => 'ayudante uno'
         ]);
 
@@ -76,7 +73,7 @@ final class DeleteAndRestoreRoleTest extends TestBase
     {
         Livewire::actingAs($this->sudo)
             ->test(Table::class)
-            ->call('restore', 4)
+            ->call('restore', $this->ayudante->id)
             ->assertHasErrors('delete_role');
     }
 }
