@@ -42,6 +42,7 @@ And change some components from the original laravel install.
 - npm run dev
 - php artisan migrate --seed
 - php artisan storage:link
+- php artisan icons:cache
 - php artisan test
 
 You must before start your proyect remove or change the git remote url
